@@ -1,0 +1,23 @@
+version: '3'
+services:
+  # App server
+  web:
+    build:
+      context: ../..
+      dockerfile: docker/app/prod.Dockerfile
+    network_mode: bridge
+    links:
+      - mysql
+      - redis
+    ports:
+      - 80:80
+
+  # MySQL
+  mysql:
+    network_mode: bridge
+    ports:
+      - 43306:3306
+  
+  # Redis
+  redis:
+    network_mode: bridge

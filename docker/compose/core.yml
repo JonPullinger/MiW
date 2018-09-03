@@ -1,0 +1,33 @@
+version: '3'
+services:
+  # App server
+  web:
+    environment:
+      APP: web
+      DB_HOST: mysql
+      DB_USERNAME: ether
+      DB_PASSWORD: AMQ5ZAZcsA52kmPY
+      DB_DATABASE: ether
+      
+      REDIS_HOST: redis
+
+  # Mysql
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: bluntAndSnakesR1337
+      MYSQL_DATABASE: ether
+      MYSQL_USER: ether
+      MYSQL_PASSWORD: AMQ5ZAZcsA52kmPY
+
+  # Redis
+  redis:
+    image: redis:alpine
+    volumes:
+      - redis:/data
+
+volumes:
+  mysql:
+  redis:
